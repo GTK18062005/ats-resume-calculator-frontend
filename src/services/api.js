@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-// Add /api to the URL
+// Use the correct base URL
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://ats-resume-calculator-backend.onrender.com/api';
 
 const api = axios.create({
@@ -19,6 +19,8 @@ export const analyzeResume = async (formData) => {
     });
     return response.data;
   } catch (error) {
+    console.error('Full error:', error);
+    console.error('Response:', error.response);
     throw error.response?.data || error.message;
   }
 };
@@ -32,15 +34,7 @@ export const analyzeWithAllModels = async (formData) => {
     });
     return response.data;
   } catch (error) {
-    throw error.response?.data || error.message;
-  }
-};
-
-export const getSupportedFormats = async () => {
-  try {
-    const response = await api.get('/resume/supported-formats');
-    return response.data;
-  } catch (error) {
+    console.error('Full error:', error);
     throw error.response?.data || error.message;
   }
 };
