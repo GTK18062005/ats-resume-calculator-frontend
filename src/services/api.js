@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Change this line:
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://ats-resume-calculator-backend.onrender.com';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://ats-resume-calculator-backend.onrender.com/api';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
