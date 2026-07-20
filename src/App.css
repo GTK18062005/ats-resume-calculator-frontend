@@ -1,0 +1,267 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+}
+
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  text-align: center;
+  padding: 30px 0;
+  color: white;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.header p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.main-card {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  margin-bottom: 30px;
+}
+
+.upload-zone {
+  border: 3px dashed #ddd;
+  border-radius: 15px;
+  padding: 40px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #fafafa;
+}
+
+.upload-zone:hover {
+  border-color: #667eea;
+  background: #f0f0ff;
+}
+
+.upload-zone.dragging {
+  border-color: #667eea;
+  background: #e8eeff;
+}
+
+.upload-zone .icon {
+  font-size: 48px;
+  color: #667eea;
+  margin-bottom: 15px;
+}
+
+.file-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+  padding: 10px;
+  background: #e8f5e9;
+  border-radius: 8px;
+  color: #2e7d32;
+}
+
+.score-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.score-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  color: white;
+  transition: transform 0.3s ease;
+}
+
+.score-card:hover {
+  transform: translateY(-5px);
+}
+
+.score-card .score-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.score-card .score-label {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  margin-top: 5px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 5px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.progress-bar .progress-fill {
+  height: 100%;
+  border-radius: 5px;
+  background: white;
+  transition: width 0.5s ease;
+}
+
+.model-selector {
+  display: flex;
+  gap: 15px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+.model-btn {
+  padding: 10px 25px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.model-btn:hover {
+  border-color: #667eea;
+  background: #f0f0ff;
+}
+
+.model-btn.active {
+  border-color: #667eea;
+  background: #667eea;
+  color: white;
+}
+
+.analyze-btn {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+.analyze-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+}
+
+.analyze-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.results-container {
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 2px solid #eee;
+}
+
+.feedback-section {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 12px;
+  margin-top: 20px;
+}
+
+.feedback-section h3 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.feedback-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.feedback-section li {
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+  color: #555;
+}
+
+.feedback-section li:last-child {
+  border-bottom: none;
+}
+
+.chart-container {
+  margin: 20px 0;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+}
+
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.error-message {
+  background: #ffebee;
+  color: #c62828;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 10px 0;
+  border-left: 4px solid #c62828;
+}
+
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .score-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .model-selector {
+    flex-direction: column;
+  }
+}
